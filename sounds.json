@@ -1,18 +1,278 @@
 [
     {
         "category": "Boats",
-        "name": "Boat Engine",
-        "file": "sounds/boat1.mp3"
+        "name": "dinghy",
+        "file": "sounds/dinghy.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "dinghy2",
+        "file": "sounds/dinghy2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "dinghy3",
+        "file": "sounds/dinghy3.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "dinghy4",
+        "file": "sounds/dinghy4.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "dinghy5",
+        "file": "sounds/dinghy5.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "jetmax",
+        "file": "sounds/jetmax.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "marquis",
+        "file": "sounds/marquis.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "seashark",
+        "file": "sounds/seashark.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "seashark2",
+        "file": "sounds/seashark2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "seashark3",
+        "file": "sounds/seashark3.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "speeder",
+        "file": "sounds/speeder.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "speeder2",
+        "file": "sounds/speeder2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "squalo",
+        "file": "sounds/squalo.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "submersible",
+        "file": "sounds/submersible.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "submersible2",
+        "file": "sounds/submersible2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "suntrap",
+        "file": "sounds/suntrap.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "toro",
+        "file": "sounds/toro.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "toro2",
+        "file": "sounds/toro2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "tropic",
+        "file": "sounds/tropic.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "tropic2",
+        "file": "sounds/tropic2.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "tug",
+        "file": "sounds/tug.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "avisa",
+        "file": "sounds/avisa.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "kosatka",
+        "file": "sounds/kosatka.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "longfin",
+        "file": "sounds/longfin.mp3"
+    },
+    {
+        "category": "Boats",
+        "name": "patrolboat",
+        "file": "sounds/patrolboat.mp3"
     },
     {
         "category": "Commercials",
-        "name": "Commercial Truck Horn",
-        "file": "sounds/commercial1.mp3"
+        "name": "benson",
+        "file": "sounds/benson.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "biff",
+        "file": "sounds/biff.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "hauler",
+        "file": "sounds/hauler.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "mule",
+        "file": "sounds/mule.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "mule2",
+        "file": "sounds/mule2.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "mule3",
+        "file": "sounds/mule3.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "mule4",
+        "file": "sounds/mule4.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "packer",
+        "file": "sounds/packer.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "phantom",
+        "file": "sounds/phantom.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "pounder",
+        "file": "sounds/pounder.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "pounder2",
+        "file": "sounds/pounder2.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "stockade",
+        "file": "sounds/stockade.mp3"
+    },
+    {
+        "category": "Commercials",
+        "name": "stockade3",
+        "file": "sounds/stockade3.mp3"
     },
     {
         "category": "Compacts",
-        "name": "Compact Car Idle",
-        "file": "sounds/compact1.mp3"
+        "name": "asbo",
+        "file": "sounds/asbo.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "blista",
+        "file": "sounds/blista.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "brioso",
+        "file": "sounds/brioso.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "club",
+        "file": "sounds/club.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "dilettante",
+        "file": "sounds/dilettante.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "dilettante2",
+        "file": "sounds/dilettante2.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "kanjo",
+        "file": "sounds/kanjo.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "issi2",
+        "file": "sounds/issi2.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "issi3",
+        "file": "sounds/issi3.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "issi4",
+        "file": "sounds/issi4.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "issi5",
+        "file": "sounds/issi5.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "issi6",
+        "file": "sounds/issi6.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "panto",
+        "file": "sounds/panto.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "prairie",
+        "file": "sounds/prairie.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "rhapsody",
+        "file": "sounds/rhapsody.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "brioso2",
+        "file": "sounds/brioso2.mp3"
+    },
+    {
+        "category": "Compacts",
+        "name": "weevil",
+        "file": "sounds/weevil.mp3"
     },
     {
         "category": "Coupes",
