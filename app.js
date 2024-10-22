@@ -62,3 +62,39 @@ document.getElementById('sort-desc').addEventListener('click', function() {
     sounds.sort((a, b) => b.name.localeCompare(a.name));
     displaySounds(sounds);
 });
+
+// app.js
+const sounds = [
+    { name: 'Car Sound 1', file: 'sounds/car_sound1.mp3' },
+    { name: 'Car Sound 2', file: 'sounds/car_sound2.mp3' },
+    { name: 'Car Sound 3', file: 'sounds/car_sound3.mp3' },
+];
+
+const soundList = document.getElementById('sound-list');
+
+// Function to create sound elements
+function loadSounds() {
+    sounds.forEach(sound => {
+        // Create a div for each sound
+        const soundDiv = document.createElement('div');
+        soundDiv.classList.add('sound-item');
+
+        // Create an audio element
+        const audio = document.createElement('audio');
+        audio.src = sound.file;
+
+        // Create a button to play the sound
+        const button = document.createElement('button');
+        button.innerText = `Play ${sound.name}`;
+        button.onclick = () => {
+            audio.play();
+        };
+
+        // Append audio and button to the div
+        soundDiv.appendChild(button);
+        soundList.appendChild(soundDiv);
+    });
+}
+
+// Call the function to load sounds
+loadSounds();
