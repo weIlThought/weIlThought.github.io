@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+#search {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#category {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.sound-item {
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
