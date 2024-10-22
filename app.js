@@ -1,100 +1,64 @@
-let sounds = [];
-
-fetch('sounds.json')
-    .then(response => response.json())
-    .then(data => {
-        sounds = data;
-        populateCategories();
-        displaySounds(sounds);
-    });
-
-function populateCategories() {
-    const categories = [...new Set(sounds.map(sound => sound.category))];
-    const categorySelect = document.getElementById('category');
-    categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = category;
-        categorySelect.appendChild(option);
-    });
-}
-
-function displaySounds(sounds) {
-    const soundList = document.getElementById('sound-list');
-    soundList.innerHTML = '';
-    sounds.forEach(sound => {
-        const soundDiv = document.createElement('div');
-        soundDiv.className = 'sound-item';
-        soundDiv.innerHTML = `
-            <h3>${sound.name}</h3>
-            <p>Category: ${sound.category}</p>
-            <audio controls>
-                <source src="${sound.file}" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        `;
-        soundList.appendChild(soundDiv);
-    });
-}
-
-document.getElementById('search').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    const filteredSounds = sounds.filter(sound => 
-        sound.name.toLowerCase().includes(query)
-    );
-    displaySounds(filteredSounds);
-});
-
-document.getElementById('category').addEventListener('change', function() {
-    const category = this.value;
-    const filteredSounds = category === 'all' 
-        ? sounds 
-        : sounds.filter(sound => sound.category === category);
-    displaySounds(filteredSounds);
-});
-
-document.getElementById('sort-asc').addEventListener('click', function() {
-    sounds.sort((a, b) => a.name.localeCompare(b.name));
-    displaySounds(sounds);
-});
-
-document.getElementById('sort-desc').addEventListener('click', function() {
-    sounds.sort((a, b) => b.name.localeCompare(a.name));
-    displaySounds(sounds);
-});
-
 // app.js
-const sounds = [
-    { name: 'Car Sound 1', file: 'sounds/car_sound1.mp3' },
-    { name: 'Car Sound 2', file: 'sounds/car_sound2.mp3' },
-    { name: 'Car Sound 3', file: 'sounds/car_sound3.mp3' },
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const sounds = [
+        { name: "Car 1", category: "sports", file: "car1.mp3" },
+        { name: "Car 2", category: "muscle", file: "car2.mp3" },
+        { name: "Car 3", category: "classic", file: "car3.mp3" },
+        // Füge hier weitere Autosounds hinzu
+    ];
 
-const soundList = document.getElementById('sound-list');
+    const soundList = document.getElementById("sound-list");
+    const searchInput = document.getElementById("search");
+    const categorySelect = document.getElementById("category");
+    const sortAscButton = document.getElementById("sort-asc");
+    const sortDescButton = document.getElementById("sort-desc");
 
-// Function to create sound elements
-function loadSounds() {
-    sounds.forEach(sound => {
-        // Create a div for each sound
-        const soundDiv = document.createElement('div');
-        soundDiv.classList.add('sound-item');
+    function renderSounds(sounds) {
+        soundList.innerHTML = "";
+        sounds.forEach(sound => {
+            const soundItem = document.createElement("div");
+            soundItem.classList.add("sound-item");
+            soundItem.innerHTML = `
+                <h3>${sound.name}</h3>
+                <p>Category: ${sound.category}</p>
+                <audio controls>
+                    <source src="${sound.file}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            `;
+            soundList.appendChild(soundItem);
+        });
+    }
 
-        // Create an audio element
-        const audio = document.createElement('audio');
-        audio.src = sound.file;
+    function filterAndSortSounds() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const category = categorySelect.value;
+        let filteredSounds = sounds.filter(sound =>
+            sound.name.toLowerCase().includes(searchTerm) &&
+            (category === "all" || sound.category === category)
+        );
 
-        // Create a button to play the sound
-        const button = document.createElement('button');
-        button.innerText = `Play ${sound.name}`;
-        button.onclick = () => {
-            audio.play();
-        };
+        if (sortAscButton.classList.contains("active")) {
+            filteredSounds.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortDescButton.classList.contains("active")) {
+            filteredSounds.sort((a, b) => b.name.localeCompare(a.name));
+        }
 
-        // Append audio and button to the div
-        soundDiv.appendChild(button);
-        soundList.appendChild(soundDiv);
+        renderSounds(filteredSounds);
+    }
+
+    searchInput.addEventListener("input", filterAndSortSounds);
+    categorySelect.addEventListener("change", filterAndSortSounds);
+    sortAscButton.addEventListener("click", () => {
+        sortAscButton.classList.add("active");
+        sortDescButton.classList.remove("active");
+        filterAndSortSounds();
     });
-}
+    sortDescButton.addEventListener("click", () => {
+        sortDescButton.classList.add("active");
+        sortAscButton.classList.remove("active");
+        filterAndSortSounds();
+    });
 
-// Call the function to load sounds
-loadSounds();
+    renderSounds(sounds);
+});
