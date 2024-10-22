@@ -62,6 +62,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listeners for search and category filter
-    searchInput.addEventListener('input', filterSounds);
-    categorySelect.addEventListener('change', filterSounds);
-});
+    searchInput.addEventListener('input', filterSounds
