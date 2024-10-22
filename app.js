@@ -1,64 +1,67 @@
-let sounds = [];
-
-fetch('sounds.json')
-    .then(response => response.json())
-    .then(data => {
-        sounds = data;
-        populateCategories();
-        displaySounds(sounds);
-    });
-
-function populateCategories() {
-    const categories = [...new Set(sounds.map(sound => sound.category))];
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search');
     const categorySelect = document.getElementById('category');
-    categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category;
-        option.textContent = category;
-        categorySelect.appendChild(option);
-    });
-}
-
-function displaySounds(sounds) {
     const soundList = document.getElementById('sound-list');
-    soundList.innerHTML = '';
-    sounds.forEach(sound => {
-        const soundDiv = document.createElement('div');
-        soundDiv.className = 'sound-item';
-        soundDiv.innerHTML = `
-            <h3>${sound.name}</h3>
-            <p>Category: ${sound.category}</p>
-            <audio controls>
-                <source src="${sound.file}" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        `;
-        soundList.appendChild(soundDiv);
-    });
-}
+    let soundsData = [];
 
-document.getElementById('search').addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    const filteredSounds = sounds.filter(sound => 
-        sound.name.toLowerCase().includes(query)
-    );
-    displaySounds(filteredSounds);
-});
+    // Fetch sounds data from JSON
+    fetch('sounds.json')
+        .then(response => response.json())
+        .then(data => {
+            soundsData = data;
+            populateCategories();
+            displaySounds(soundsData);
+        })
+        .catch(error => console.error('Error loading sounds:', error));
 
-document.getElementById('category').addEventListener('change', function() {
-    const category = this.value;
-    const filteredSounds = category === 'all' 
-        ? sounds 
-        : sounds.filter(sound => sound.category === category);
-    displaySounds(filteredSounds);
-});
+    // Populate category dropdown
+    function populateCategories() {
+        const categories = new Set(soundsData.map(sound => sound.category));
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = capitalizeFirstLetter(category);
+            categorySelect.appendChild(option);
+        });
+    }
 
-document.getElementById('sort-asc').addEventListener('click', function() {
-    sounds.sort((a, b) => a.name.localeCompare(b.name));
-    displaySounds(sounds);
-});
+    // Display sounds based on filter
+    function displaySounds(sounds) {
+        soundList.innerHTML = '';
+        sounds.forEach(sound => {
+            const soundCard = document.createElement('div');
+            soundCard.className = 'sound-card';
+            soundCard.dataset.category = sound.category;
 
-document.getElementById('sort-desc').addEventListener('click', function() {
-    sounds.sort((a, b) => b.name.localeCompare(a.name));
-    displaySounds(sounds);
+            soundCard.innerHTML = `
+                <h3>${sound.name}</h3>
+                <audio controls>
+                    <source src="sounds/${sound.file}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            `;
+            soundList.appendChild(soundCard);
+        });
+    }
+
+    // Filter sounds by search and category
+    function filterSounds() {
+        const searchValue = searchInput.value.toLowerCase();
+        const selectedCategory = categorySelect.value;
+        const filteredSounds = soundsData.filter(sound => {
+            const matchesSearch = sound.name.toLowerCase().includes(searchValue);
+            const matchesCategory = selectedCategory === 'all' || sound.category === selectedCategory;
+            return matchesSearch && matchesCategory;
+        });
+        displaySounds(filteredSounds);
+    }
+
+    // Helper function to capitalize category names
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Event listeners for search and category filter
+    searchInput.addEventListener('input', filterSounds);
+    categorySelect.addEventListener('change', filterSounds);
 });

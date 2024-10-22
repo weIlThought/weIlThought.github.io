@@ -1,123 +1,133 @@
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: #121212;
-    color: #f0f0f0;
+    background-color: #121212;
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background: #1e1e1e;
     text-align: center;
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+    border-bottom: 2px solid #333;
 }
 
 header h1 {
+    font-size: 2.5rem;
     margin: 0;
-    font-size: 2.8rem;
-    color: #00ff99;
-    text-shadow: 2px 2px 5px #000;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 header p {
-    font-size: 1.1rem;
     margin-top: 10px;
-    color: #bbb;
+    color: #a0a0a0;
+    font-size: 1.1rem;
 }
 
-.search-container {
+/* Search and Filter */
+.controls {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
     padding: 20px;
-    background: #181818;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-input, .category-select {
+    padding: 12px;
+    background-color: #2e2e2e;
+    border: none;
+    border-radius: 30px;
+    color: #e0e0e0;
+    outline: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-input {
-    padding: 10px 15px;
     width: 300px;
-    border-radius: 30px;
-    border: 1px solid #333;
-    background: #333;
-    color: #f0f0f0;
     font-size: 1rem;
-    transition: all 0.3s ease;
 }
 
-.search-input:focus {
-    outline: none;
-    border-color: #00ff99;
-    box-shadow: 0 0 10px #00ff99;
-}
-
-#category, .sort-button {
-    padding: 10px;
-    border-radius: 30px;
-    border: 1px solid #333;
-    background: #333;
-    color: #f0f0f0;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+.category-select {
     cursor: pointer;
+    font-size: 1rem;
 }
 
-.sort-button:hover, #category:hover {
-    background: #00ff99;
-    color: #121212;
+.search-input:focus, .category-select:focus {
+    background-color: #404040;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
+/* Sound Cards */
 .sound-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    background-color: #121212;
+}
+
+.sound-card {
+    background: linear-gradient(145deg, #1d1d1d, #292929);
     padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.sound-item {
-    background: #282828;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.sound-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
-.sound-item:hover {
-    transform: translateY(-5px);
-    background-color: #333;
-}
-
-.sound-item h3 {
-    margin: 0;
-    color: #00ff99;
-    font-size: 1.4rem;
-}
-
-.sound-item p {
-    color: #bbb;
-    margin: 5px 0 15px;
+.sound-card h3 {
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+    color: #ffffff;
 }
 
 audio {
     width: 100%;
+    outline: none;
+    background-color: #2a2a2a;
     border-radius: 5px;
 }
 
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #3a3a3a;
+    border: none;
+    border-radius: 5px;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #505050;
+}
+
+/* Footer */
 footer {
-    background: #1e1e1e;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
     color: #888;
     font-size: 0.9rem;
 }
 
-footer .social-icons a {
-    color: #00ff99;
-    margin: 0 10px;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+footer a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-footer .social-icons a:hover {
+footer a:hover {
     color: #f0f0f0;
 }
