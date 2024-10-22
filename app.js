@@ -1,6 +1,5 @@
 let sounds = [];
 
-// Fetch the sounds data
 fetch('sounds.json')
     .then(response => response.json())
     .then(data => {
@@ -9,7 +8,6 @@ fetch('sounds.json')
         displaySounds(sounds);
     });
 
-// Populate the categories dropdown
 function populateCategories() {
     const categories = [...new Set(sounds.map(sound => sound.category))];
     const categorySelect = document.getElementById('category');
@@ -21,7 +19,6 @@ function populateCategories() {
     });
 }
 
-// Display the sounds
 function displaySounds(sounds) {
     const soundList = document.getElementById('sound-list');
     soundList.innerHTML = '';
@@ -40,7 +37,6 @@ function displaySounds(sounds) {
     });
 }
 
-// Search functionality
 document.getElementById('search').addEventListener('input', function() {
     const query = this.value.toLowerCase();
     const filteredSounds = sounds.filter(sound => 
@@ -49,11 +45,20 @@ document.getElementById('search').addEventListener('input', function() {
     displaySounds(filteredSounds);
 });
 
-// Category filter functionality
 document.getElementById('category').addEventListener('change', function() {
     const category = this.value;
     const filteredSounds = category === 'all' 
         ? sounds 
         : sounds.filter(sound => sound.category === category);
     displaySounds(filteredSounds);
+});
+
+document.getElementById('sort-asc').addEventListener('click', function() {
+    sounds.sort((a, b) => a.name.localeCompare(b.name));
+    displaySounds(sounds);
+});
+
+document.getElementById('sort-desc').addEventListener('click', function() {
+    sounds.sort((a, b) => b.name.localeCompare(a.name));
+    displaySounds(sounds);
 });
