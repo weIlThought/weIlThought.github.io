@@ -92,6 +92,7 @@ header p {
 }
 
 audio {
+    color: red;
     width: 100%;
     outline: none;
     background-color: linear-gradient(145deg, #1d1d1d, #292929);
