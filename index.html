@@ -6,47 +6,50 @@
     <title>GTA5 Car Sounds Library</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>GTA5 Car Sounds Library</h1>
-        <p>Explore authentic vehicle sounds from GTA5. Search, filter, and listen in style!</p>
+        <h1>GTA5 Car Sounds</h1>
+        <p>Explore and listen to the best car sounds from GTA5. Search, filter, and enjoy!</p>
     </header>
 
-    <div class="search-container">
+    <div class="controls">
         <input type="text" id="search" placeholder="🔍 Search for a car..." class="search-input">
-        <select id="category">
+        <select id="category" class="category-select">
             <option value="all">All Categories</option>
             <option value="sports">Sports Cars</option>
             <option value="muscle">Muscle Cars</option>
             <option value="suv">SUVs</option>
             <option value="motorcycle">Motorcycles</option>
         </select>
-        <button id="sort-asc" class="sort-button">Sort A-Z</button>
-        <button id="sort-desc" class="sort-button">Sort Z-A</button>
     </div>
 
     <div id="sound-list" class="sound-list">
-        <!-- Example Card for Each Sound -->
-        <div class="sound-card">
-            <h3>Car Model Name</h3>
+        <!-- Placeholder cards for audio elements -->
+        <div class="sound-card" data-category="sports">
+            <h3>Sports Car 1</h3>
             <audio controls>
-                <source src="sounds/car-sound.mp3" type="audio/mpeg">
+                <source src="sounds/sportscar1.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
+        <div class="sound-card" data-category="muscle">
+            <h3>Muscle Car 1</h3>
+            <audio controls>
+                <source src="sounds/musclecar1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <!-- Add more placeholders as needed -->
     </div>
 
     <footer>
-        <p>&copy; 2024 GTA5 Sounds Library | Connect with us:</p>
-        <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
+        <p>&copy; 2024 GTA5 Sounds Library | Follow us on 
+            <a href="#" target="_blank">GitHub</a>, 
+            <a href="#" target="_blank">Twitter</a>, 
+            <a href="#" target="_blank">Instagram</a>
+        </p>
     </footer>
-
-    <script src="app.js"></script>
 </body>
 </html>
