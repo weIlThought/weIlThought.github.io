@@ -52,3 +52,13 @@ document.getElementById('category').addEventListener('change', function() {
         : sounds.filter(sound => sound.category === category);
     displaySounds(filteredSounds);
 });
+
+document.getElementById('sort-asc').addEventListener('click', function() {
+    sounds.sort((a, b) => a.name.localeCompare(b.name));
+    displaySounds(sounds);
+});
+
+document.getElementById('sort-desc').addEventListener('click', function() {
+    sounds.sort((a, b) => b.name.localeCompare(a.name));
+    displaySounds(sounds);
+});

@@ -1,37 +1,13 @@
 [
     {
-        "name": "Sportscar 1",
-        "file": "sportscar1.mp3",
-        "category": "sports"
+      "category": "Sports Cars",
+      "name": "Entity XF",
+      "file": "sounds/entity_xf.mp3"
     },
     {
-        "name": "Sportscar 2",
-        "file": "sportscar2.mp3",
-        "category": "sports"
-    },
-    {
-        "name": "Muscle Car 1",
-        "file": "musclecar1.mp3",
-        "category": "muscle"
-    },
-    {
-        "name": "Muscle Car 2",
-        "file": "musclecar2.mp3",
-        "category": "muscle"
-    },
-    {
-        "name": "SUV 1",
-        "file": "suv1.mp3",
-        "category": "suv"
-    },
-    {
-        "name": "Motorcycle 1",
-        "file": "motorcycle1.mp3",
-        "category": "motorcycle"
-    },
-    {
-        "name": "Electric Car 1",
-        "file": "electric1.mp3",
-        "category": "electric"
+      "category": "SUVs",
+      "name": "Landstalker",
+      "file": "sounds/landstalker.mp3"
     }
-]
+  ]
+  
