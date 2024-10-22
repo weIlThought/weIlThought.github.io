@@ -7,11 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
         // Füge hier weitere Autosounds hinzu
     ];
 
-    const soundList = document.getElementById("sound-list");
-    const searchInput = document.getElementById("search");
-    const categorySelect = document.getElementById("category");
-    const sortAscButton = document.getElementById("sort-asc");
-    const sortDescButton = document.getElementById("sort-desc");
+    const searchInput = document.getElementById('search');
+    const categorySelect = document.getElementById('category');
+    const sortAscButton = document.getElementById('sort-asc');
+    const sortDescButton = document.getElementById('sort-desc');
+    const soundList = document.getElementById('sound-list');
+
+    searchInput.addEventListener('input', filterSounds);
+    categorySelect.addEventListener('change', filterSounds);
+    sortAscButton.addEventListener('click', () => sortSounds('asc'));
+    sortDescButton.addEventListener('click', () => sortSounds('desc'));
+
+    function filterSounds() {
+        // Logic for filtering sounds by search and category
+    }
+
+    function sortSounds(order) {
+        // Logic for sorting sounds alphabetically
+    }
 
     function renderSounds(sounds) {
         soundList.innerHTML = "";

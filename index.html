@@ -4,30 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTA5 Car Sounds Library</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>GTA5 Car Sounds Library</h1>
-        <p>Discover and enjoy authentic vehicle sounds from GTA5. Search, filter, and listen to the engine sounds you love.</p>
+        <p>Explore authentic vehicle sounds from GTA5. Search, filter, and listen in style!</p>
     </header>
-    <div class="container">
-        <div class="search-container">
-            <input type="text" id="search" placeholder="🔍 Search for a car..." class="search-input">
-            <select id="category">
-                <option value="all">All Categories</option>
-                <option value="sports">Sports</option>
-                <option value="muscle">Muscle</option>
-                <option value="classic">Classic</option>
-                <option value="super">Super</option>
-            </select>
-            <button id="sort-asc" class="sort-button">Sort A-Z</button>
-            <button id="sort-desc" class="sort-button">Sort Z-A</button>
-        </div>
-        <div id="sound-list" class="sound-list"></div>
+
+    <div class="search-container">
+        <input type="text" id="search" placeholder="🔍 Search for a car..." class="search-input">
+        <select id="category">
+            <option value="all">All Categories</option>
+            <option value="sports">Sports Cars</option>
+            <option value="muscle">Muscle Cars</option>
+            <option value="suv">SUVs</option>
+            <option value="motorcycle">Motorcycles</option>
+        </select>
+        <button id="sort-asc" class="sort-button">Sort A-Z</button>
+        <button id="sort-desc" class="sort-button">Sort Z-A</button>
     </div>
+
+    <div id="sound-list" class="sound-list">
+        <!-- Example Card for Each Sound -->
+        <div class="sound-card">
+            <h3>Car Model Name</h3>
+            <audio controls>
+                <source src="sounds/car-sound.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 GTA5 Sounds Library | Connect with us:</p>
         <div class="social-icons">
@@ -36,6 +46,7 @@
             <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
