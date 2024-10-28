@@ -11,8 +11,8 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR-oOBOMeDPp9HBZHEadZHLqM
             const row = rows[i];
             if (row.length > 6) { // Stelle sicher, dass die Zeile genug Spalten hat
                 result.push({
-                    optimierungsStatus: row[4], // Spalte für Optimierungs Status
-                    dcIdKaeufer: row[6]         // Spalte für DC ID Käufer
+                    optimierungsStatus: row[4] ? row[4].trim() : '', // Spalte für Optimierungs Status
+                    dcIdKaeufer: row[6] ? row[6].trim() : ''        // Spalte für DC ID Käufer
                 });
             }
         }
@@ -22,8 +22,8 @@ fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vR-oOBOMeDPp9HBZHEadZHLqM
         result.forEach(item => {
             const row = document.createElement("tr"); // Neue Zeile erstellen
             row.innerHTML = `
-                <td>${item.optimierungsStatus}</td>
-                <td>${item.dcIdKaeufer}</td>
+                <td>${item.optimierungsStatus || ''}</td>
+                <td>${item.dcIdKaeufer || ''}</td>
             `;
             tableBody.appendChild(row); // Zeile zur Tabelle hinzufügen
         });
