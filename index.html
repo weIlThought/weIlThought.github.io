@@ -1,34 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTA5 Car Sounds Library</title>
+    <title>Hopelife Import Status</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="app.js" defer></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
-    <header>
-        <h1>GTA5 Car Sounds</h1>
-        <p>Discover the most iconic car sounds from GTA5. Use the search and filter options to find your favorite!</p>
-    </header>
-
-    <div class="controls">
-        <input type="text" id="search" placeholder="🔍 Search for a car sound..." class="search-input">
-        <select id="category" class="category-select">
-            <option value="all">All Categories</option>
-        </select>
+    <div class="container">
+        <h1>Optimierungs Status & DC ID Käufer</h1>
+        <button id="loadDataButton">Daten laden</button>
+        <div id="dataDisplay"></div>
     </div>
 
-    <div id="sound-list" class="sound-list"></div>
-
-    <footer>
-        <p>&copy; 2024 GTA5 Sounds Library | Connect with us: 
-            <a href="#" target="_blank">GitHub</a> | 
-            <a href="#" target="_blank">Twitter</a> | 
-            <a href="#" target="_blank">Instagram</a>
-        </p>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

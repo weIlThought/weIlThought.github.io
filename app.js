@@ -1,67 +1,91 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
-    const categorySelect = document.getElementById('category');
-    const soundList = document.getElementById('sound-list');
-    let soundsData = [];
+document.getElementById("loadDataButton").addEventListener("click", loadGapiClient);
 
-    // Fetch sounds data from JSON
-    fetch('sounds.json')
-        .then(response => response.json())
-        .then(data => {
-            soundsData = data;
-            populateCategories();
-            displaySounds(soundsData);
-        })
-        .catch(error => console.error('Error loading sounds:', error));
+function loadGapiClient() {
+  gapi.load("client:auth2", initClient);
+}
 
-    // Populate category dropdown
-    function populateCategories() {
-        const categories = new Set(soundsData.map(sound => sound.category));
-        categories.forEach(category => {
-            const option = document.createElement('option');
-            option.value = category;
-            option.textContent = capitalizeFirstLetter(category);
-            categorySelect.appendChild(option);
+function initClient() {
+  gapi.client.init({
+    apiKey: "DEIN_API_KEY",
+    clientId: "DEINE_CLIENT_ID",
+    discoveryDocs: ["https://docs.googleapis.com/$discovery/rest?version=v1"],
+    scope: "https://www.googleapis.com/auth/documents.readonly",
+  }).then(() => {
+    console.log("GAPI client geladen.");
+    gapi.auth2.getAuthInstance().signIn().then(loadDocument);
+  });
+}
+
+function loadDocument() {
+  const documentId = "DOKUMENT_ID";  // Ersetze mit deiner Dokument-ID
+  gapi.client.docs.documents.get({
+    documentId: documentId
+  }).then((response) => {
+    const doc = response.result;
+    const optimizationData = [];
+
+    // Dokumentinhalt durchlaufen
+    doc.body.content.forEach(element => {
+      if (element.table) {
+        element.table.tableRows.forEach((row, rowIndex) => {
+          if (rowIndex === 0) return;  // Kopfzeile überspringen
+
+          const optimizationStatusCell = row.tableCells[4]; // Optimierungs Status
+          const dcIdBuyerCell = row.tableCells[6]; // DC ID Käufer
+
+          const optimizationStatusText = optimizationStatusCell.content.map(content => 
+            content.paragraph.elements.map(el => el.textRun.content).join("")
+          ).join("");
+          
+          const dcIdBuyerText = dcIdBuyerCell.content.map(content => 
+            content.paragraph.elements.map(el => el.textRun.content).join("")
+          ).join("");
+
+          optimizationData.push({
+            optimizationStatus: optimizationStatusText.trim(),
+            dcIdBuyer: dcIdBuyerText.trim()
+          });
         });
-    }
+      }
+    });
 
-    // Display sounds based on filter
-    function displaySounds(sounds) {
-        soundList.innerHTML = '';
-        sounds.forEach(sound => {
-            const soundCard = document.createElement('div');
-            soundCard.className = 'sound-card';
-            soundCard.dataset.category = sound.category;
+    displayData(optimizationData);
+  }, (error) => {
+    console.error("Fehler beim Abrufen des Dokuments:", error);
+    document.getElementById("dataDisplay").innerText = "Fehler beim Laden der Daten.";
+  });
+}
 
-            soundCard.innerHTML = `
-                <h3>${sound.name}</h3>
-                <audio controls>
-                    <source src="sounds/${sound.file}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            `;
-            soundList.appendChild(soundCard);
-        });
-    }
+function displayData(data) {
+  const dataDisplay = document.getElementById("dataDisplay");
+  dataDisplay.innerHTML = "";  // Vorherige Daten löschen
+  
+  // Tabelle erstellen
+  const table = document.createElement("table");
+  table.classList.add("table");
+  const headerRow = document.createElement("tr");
+  
+  const headers = ["Optimierungs Status", "DC ID Käufer"];
+  headers.forEach(headerText => {
+    const header = document.createElement("th");
+    header.innerText = headerText;
+    headerRow.appendChild(header);
+  });
+  table.appendChild(headerRow);
 
-    // Filter sounds by search and category
-    function filterSounds() {
-        const searchValue = searchInput.value.toLowerCase();
-        const selectedCategory = categorySelect.value;
-        const filteredSounds = soundsData.filter(sound => {
-            const matchesSearch = sound.name.toLowerCase().includes(searchValue);
-            const matchesCategory = selectedCategory === 'all' || sound.category === selectedCategory;
-            return matchesSearch && matchesCategory;
-        });
-        displaySounds(filteredSounds);
-    }
+  data.forEach(rowData => {
+    const row = document.createElement("tr");
+    
+    const optimizationStatusCell = document.createElement("td");
+    optimizationStatusCell.innerText = rowData.optimizationStatus;
+    row.appendChild(optimizationStatusCell);
+    
+    const dcIdBuyerCell = document.createElement("td");
+    dcIdBuyerCell.innerText = rowData.dcIdBuyer;
+    row.appendChild(dcIdBuyerCell);
+    
+    table.appendChild(row);
+  });
 
-    // Helper function to capitalize category names
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-    // Event listeners for search and category filter
-    searchInput.addEventListener('input', filterSounds);
-    categorySelect.addEventListener('change', filterSounds);
-});
+  dataDisplay.appendChild(table);
+}
