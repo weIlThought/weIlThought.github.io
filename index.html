@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hopelife Import Status</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Optimierungs Status & DC ID Käufer</h1>
-        <button id="loadDataButton">Daten laden</button>
-        <div id="dataDisplay"></div>
-    </div>
 
-    <script src="script.js"></script>
+<h1>Daten von Google Tabelle</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Optimierungs Status</th>
+            <th>DC ID Käufer</th>
+        </tr>
+    </thead>
+    <tbody id="data-table-body">
+        <!-- Daten werden hier eingefügt -->
+    </tbody>
+</table>
+
+<script src="script.js"></script> <!-- JavaScript-Datei einbinden -->
 </body>
 </html>
