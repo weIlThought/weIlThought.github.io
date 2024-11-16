@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hopelife Import Status</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
+  <header>
+    <h1>User Dashboard</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin Bereich</a>
+  </nav>
+  <div class="container">
+    <h2>Link Checker</h2>
+    <input type="text" id="linkInput" placeholder="Gib einen Link ein">
+    <button onclick="checkLink()">Prüfen</button>
+    <div class="status" id="status"></div>
+  </div>
 
-<!-- <h1>Daten von Google Tabelle</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Optimierungs Status</th>
-            <th>DC ID Käufer</th>
-        </tr>
-    </thead>
-    <tbody id="data-table-body">
-         Daten werden hier eingefügt 
-    </tbody>
-</table> -->
-
-<script src="script.js"></script> <!-- JavaScript-Datei einbinden -->
+  <script>
+    function checkLink() {
+      const link = document.getElementById('linkInput').value;
+      const statusDiv = document.getElementById('status');
+      try {
+        new URL(link);
+        if (link.startsWith('http://') || link.startsWith('https://')) {
+          statusDiv.textContent = 'Status: Gültig';
+          statusDiv.style.color = 'green';
+        } else {
+          statusDiv.textContent = 'Status: Ungültig';
+          statusDiv.style.color = 'red';
+        }
+      } catch (_) {
+        statusDiv.textContent = 'Status: Ungültig';
+        statusDiv.style.color = 'red';
+      }
+    }
+  </script>
 </body>
 </html>

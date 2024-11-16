@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Bereich</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Bereich</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin Bereich</a>
+  </nav>
+  <div class="container">
+    <h2>Admin Login</h2>
+    <div id="loginForm">
+      <input type="text" id="username" placeholder="Benutzername">
+      <input type="password" id="password" placeholder="Passwort">
+      <button onclick="login()">Login</button>
+    </div>
+    <div id="adminDashboard" class="hidden">
+      <h2>Admin Dashboard</h2>
+      <h3>Auto hinzufügen</h3>
+      <input type="text" id="autoName" placeholder="Auto Name">
+      <input type="text" id="autoLink" placeholder="Auto Link">
+      <select id="autoStatus">
+        <option value="aktiv">Aktiv</option>
+        <option value="inaktiv">Inaktiv</option>
+      </select>
+      <button onclick="addAuto()">Hinzufügen</button>
+
+      <h3>Bestehende Autos</h3>
+      <ul id="autoList"></ul>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_USERNAME = 'admin';
+    const ADMIN_PASSWORD = 'password123';
+
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        document.getElementById('loginForm').classList.add('hidden');
+        document.getElementById('adminDashboard').classList.remove('hidden');
+        loadAutos();
+      } else {
+        alert('Ungültige Anmeldedaten');
+      }
+    }
+
+    function loadAutos() {
+      const autos = JSON.parse(localStorage.getItem('autos')) || [];
+      const autoList = document.getElementById('autoList');
+      autoList.innerHTML = '';
+      autos.forEach((auto) => {
+        const li = document.createElement('li');
+        li.textContent = `${auto.name} - ${auto.link} - ${auto.status}`;
+        autoList.appendChild(li);
+      });
+    }
+
+    function addAuto() {
+      const name = document.getElementById('autoName').value;
+      const link = document.getElementById('autoLink').value;
+      const status = document.getElementById('autoStatus').value;
+      if (!name || !link) {
+        alert('Name und Link sind erforderlich');
+        return;
+      }
+      const autos = JSON.parse(localStorage.getItem('autos')) || [];
+      autos.push({ name, link, status });
+      localStorage.setItem('autos', JSON.stringify(autos));
+      loadAutos();
+      document.getElementById('autoName').value = '';
+      document.getElementById('autoLink').value = '';
+    }
+  </script>
+</body>
+</html>
